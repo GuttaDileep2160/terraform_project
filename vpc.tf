@@ -15,7 +15,7 @@ terraform {
 }
 provider "aws" {
   # Configuration options
-  region = "ap-south-1"
+  region = var.aws_region
 
 }
 
@@ -77,14 +77,6 @@ resource "aws_subnet" "project-private-subnet-1b" {
   }
 }
 
-#creating Internet Gateway
-resource "aws_internet_gateway" "Project_IG" {
-  vpc_id = aws_vpc.project-vpc.id
-
-  tags = {
-    Name = "project_IG"
-  }
-}
 
 #creating route table
 resource "aws_route_table" "webapp-project-route-table" {

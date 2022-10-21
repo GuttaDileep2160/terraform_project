@@ -2,9 +2,9 @@
 resource "aws_launch_template" "webapp-launch-template-ASG" {
 
   name_prefix            = "webapp1"
-  image_id               = "ami-062df10d14676e201"
-  key_name               = "FirstKeyPair"
-  instance_type          = "t2.micro"
+  image_id               = var.instance_ami
+  key_name               = var.instance_keypair
+  instance_type          = var.instance_type
   vpc_security_group_ids = [aws_security_group.allow_80_22.id]
   user_data              = filebase64("${path.module}/webapp.sh")
 }

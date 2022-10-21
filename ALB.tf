@@ -12,7 +12,7 @@ resource "aws_lb_target_group" "Webapp-LB-target-group" {
 resource "aws_lb" "Webapp-LB1" {
   name               = "Webapp-LB1"
   internal           = false
-  load_balancer_type = "application"
+  load_balancer_type = var.load_balancer_type
   security_groups    = [aws_security_group.allow-80-for-LB.id]
   subnets            = [aws_subnet.project-subnet-1a.id, aws_subnet.project-subnet-1b.id]
 
